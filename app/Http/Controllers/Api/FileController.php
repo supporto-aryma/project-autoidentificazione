@@ -48,17 +48,11 @@ class FileController extends Controller
 
     public function downloadFile($fileName, Request $request)
     {
-        // $fileExists = Storage::download('/app/public/files/'.$data['file_name']);
 
         $file = Storage::disk('public')->get("/files/".$fileName);
  
 		return (new Response($file, 200))
               ->header('Content-Type', 'image/jpeg');
-
-        // return response()->json([
-        //     'fileExists' => $fileExists,
-        //     'status' => true,
-        // ], 200);
     }
 
     public function storeFile($file, $content)
